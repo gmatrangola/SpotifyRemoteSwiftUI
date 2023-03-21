@@ -22,13 +22,7 @@ struct ContentView: View {
                     .imageScale(.large)
                     .foregroundColor(.accentColor)
             }
-            
-            Button(action: sptConnector.initiateSession) {
-                Text(sptConnector.isConntected ? "Connected":"Connect")
-            }
-            .disabled(sptConnector.isConntected)
-            .controlSize(.large)
-            
+                        
             if let playerState = sptConnector.playerSteate {
                 Button {
                     if (playerState.isPaused) {
@@ -44,6 +38,18 @@ struct ContentView: View {
                         .frame(width: 100, height: 100)
                 }
             }
+            Button {
+                if (sptConnector.isConntected) {
+                    sptConnector.appRemote.disconnect()
+                }
+                else {
+                    sptConnector.initiateSession()
+                }
+            } label: {
+                Text(sptConnector.isConntected ? "Disconnect":"Connect")
+            }
+            .controlSize(.large)
+
         }
         .padding()
     }
