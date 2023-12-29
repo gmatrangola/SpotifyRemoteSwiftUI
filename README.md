@@ -1,8 +1,10 @@
 # SpotifyRemoteSwiftUI
 
 This is an alternative implementation of the Sample Spotify iOS app https://github.com/spotify/ios-sdk using [SwiftUI](https://developer.apple.com/Xcode/swiftui/) instead of [UIKit](https://developer.apple.com/documentation/uikit).
+It is very basic interface to the Spotify App running on your phone for learning and demonstartion purposes. A real app would probably do a lot of these interactions in the background.
 
-The demonstrates some basic features of the SpotifyiOS.framework. This is how to use it once you get it running on your iPhone.
+The demonstrates some basic features of the SpotifyiOS.framework. This is how to use it once you get it running on your iPhone. This is a little bit jiggy the first time you connect, because it has to authenticate your Spotify Account through the Spotify App. But then you need to re-connect to the Spotify app
+after timeout, but you won't need to reauthenticate.
 - Press connect to the Spotify iOS app to authenticate.
 - Allow the app to access your Spotify Account
 - The app will launch the Spotify App and resume playing the last song/playlist/album
@@ -20,18 +22,17 @@ The demonstrates some basic features of the SpotifyiOS.framework. This is how to
 - Spotify App installed on your iPhone
 - XCode
 - A Spotify Developer's account and setting up an app in the [Spotify Dashboard](https://developer.spotify.com/dashboard/applications)
-- An iPhone. This will *not* run in the simulator.
+- An iPhone. This will *not* run in the simulator because it needs to talk to the Spotify App which (AFAICT) can't be installed in the simulator.
 
 ## Setup
 
 - Clone or download this project from GitHub.com
 - Launch XCode and open the project
-- Download the [Spotify iOS SDK](https://developer.spotify.com/documentation/ios/)
 - Put the SpotifyiOS.framework file under SpotifyRemoteSwiftUI directory in the Xcode project
 - Open the [Spotify Dashboard](https://developer.spotify.com/dashboard/applications) and click Create an App.
     - Click Edit Settings
-    - add spotify-api-example-app://login-callback to the Redirect URIs
-    - add the Bundle ID com.matrangola.SpotifyRemoteSwiftUI
+    - add sptremote://oauth/callback to the Redirect URIs (needs to be unique for each Spotify App you create) *Note this changed since the last update*
+    - add the Bundle ID com.matrangola.SpotifyRemoteSwiftUI (you can change both in the source and on the dashboard if you wish)
     - hit Save 
 - Edit Constants.swift and change the following lines to match the values in the Spotify Dashboard
 

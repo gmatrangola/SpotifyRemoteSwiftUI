@@ -5,7 +5,7 @@ let accessTokenKey = "access-token-key"
  Update the following to match the App defined in your Spotify developer
  dashboard.
  */
-let redirectUri = URL(string:"spotify-api-example-app://login-callback")!
+let redirectUri = URL(string:"sptremote://oauth/callback")!
 let spotifyClientId = ""
 let spotifyClientSecretKey = ""
 
